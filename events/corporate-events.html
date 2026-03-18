@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate & Formal Hosting | Piyush Motwani</title>
+  <meta name="description"
+    content="Professional corporate event hosting for Fortune 500 companies including Amazon, Infosys, IBM, BMC Software, and MetLife.">
+  <meta name="keywords" content="Corporate Events, Team Building, Award Ceremonies, Corporate Host, Professional Emcee">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../eventpage.css">
+  <style>
+    /* Premium Corporate Theme */
+    :root {
+      --corp-blue: #0F172A;
+      --corp-blue-light: #1E40AF;
+      --corp-slate: #334155;
+      --corp-gold: #D4AF37;
+      --corp-silver: #94A3B8;
+    }
+
+    .event-header.corporate-header {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    .corporate-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+      color: #ffffff;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .corporate-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* Subtle gold accent line */
+    .corporate-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--corp-gold), transparent);
+    }
+
+    .corporate-header .back-link {
+      color: var(--corp-silver);
+      position: relative;
+      z-index: 10;
+    }
+
+    .corporate-header .back-link:hover {
+      color: var(--corp-gold);
+    }
+
+    .corporate-header .event-page-title {
+      color: #ffffff;
+      position: relative;
+      z-index: 10;
+    }
+
+    .corporate-header .event-page-subtitle {
+      color: var(--corp-silver);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Videos Section */
+    .corporate-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #334155 0%, #1E293B 30%, #F8FAFC 100%);
+      position: relative;
+    }
+
+    .corporate-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header-corp {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #ffffff;
+    }
+
+    .section-header-corp h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header-corp p {
+      color: var(--corp-silver);
+      font-size: 1rem;
+    }
+
+    /* Video Grid - 2 portrait with logos, 2 without */
+    .corporate-video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .corporate-video-card {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .corporate-video-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .corporate-video-card.with-logo .video-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-placeholder {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .logo-placeholder svg {
+      width: 24px;
+      height: 24px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .video-header .company-info {
+      flex: 1;
+    }
+
+    .video-header .company-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    .video-header .company-role {
+      font-size: 0.75rem;
+      color: var(--corp-silver);
+    }
+
+    /* Portrait video placeholder */
+    .video-placeholder-portrait {
+      aspect-ratio: 9/16;
+      max-height: 450px;
+      background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-placeholder-portrait::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(30, 64, 175, 0.1), transparent 30%);
+      animation: rotateGlow 12s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .video-placeholder-portrait svg {
+      width: 56px;
+      height: 56px;
+      color: var(--corp-blue-light);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-placeholder-portrait .ratio-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-placeholder-portrait .instruction {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Horizontal video placeholder */
+    .video-placeholder-landscape {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-placeholder-landscape::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(30, 64, 175, 0.1), transparent 30%);
+      animation: rotateGlow 12s linear infinite;
+    }
+
+    .video-placeholder-landscape svg {
+      width: 56px;
+      height: 56px;
+      color: var(--corp-blue-light);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-placeholder-landscape .ratio-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-placeholder-landscape .instruction {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Cards without logo - policy restricted */
+    .corporate-video-card.no-logo .video-header {
+      background: linear-gradient(135deg, #374151 0%, #4B5563 100%);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .corporate-video-card.no-logo .video-header svg {
+      width: 20px;
+      height: 20px;
+      color: #9CA3AF;
+    }
+
+    .corporate-video-card.no-logo .video-header span {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      color: #D1D5DB;
+    }
+
+    /* More Engagements */
+    .more-engagements-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 50%, #ffffff 100%);
+    }
+
+    .more-engagements-box {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3rem;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      border-radius: 20px;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .more-engagements-box::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+    }
+
+    .more-engagements-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .more-engagements-box p {
+      color: var(--corp-silver);
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .client-logos {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .client-logo {
+      width: 80px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      color: var(--corp-silver);
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+    }
+
+    /* Corporate CTA */
+    .corporate-cta {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #ffffff 0%, #F1F5F9 50%, #E2E8F0 100%);
+      position: relative;
+    }
+
+    .corporate-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--corp-blue), var(--corp-blue-light), var(--corp-gold));
+    }
+
+    .corporate-cta .cta-box {
+      background: linear-gradient(135deg, var(--corp-blue) 0%, var(--corp-blue-light) 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .corporate-cta .cta-box::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+    }
+
+    .corporate-cta .cta-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .corporate-cta .cta-box p {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .corporate-cta .contact-main-cta {
+      background: var(--corp-gold);
+      color: var(--corp-blue);
+      position: relative;
+    }
+
+    .corporate-cta .contact-main-cta:hover {
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+    }
+
+    /* TRUSTED BY LOGO CAROUSEL */
+
+    .trusted-by-section {
+      background: #ffffff;
+      padding: 3rem 2rem;
+      overflow: hidden;
+    }
+
+    .trusted-container {
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .trusted-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: #0F172A;
+    }
+
+    .logo-carousel {
+      overflow-x: auto;
+      overflow-y: hidden;
+      position: relative;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .logo-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .logo-carousel {
+      scrollbar-width: none;
+    }
+
+    .logo-carousel:hover .logo-track,
+    .logo-carousel:active .logo-track {
+      animation-play-state: paused;
+    }
+
+    .logo-track {
+      display: flex;
+      gap: 4rem;
+      animation: scrollLogos 15s linear infinite;
+    }
+
+    .logo-item {
+      min-width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-item img {
+      max-height: 40px;
+      object-fit: contain;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo-item img:hover {
+      opacity: 1;
+    }
+
+    @keyframes scrollLogos {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .video-split {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .portrait-video {
+      width: 220px;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .landscape-video {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 1rem;
+    }
+
+    .video-info {
+      flex: 1;
+    }
+
+    .video-info h3 {
+      font-family: 'Poppins';
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #0F172A;
+    }
+
+    .video-info p {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .video-info ul {
+      padding-left: 18px;
+      font-size: 0.85rem;
+      color: #64748B;
+    }
+
+    .video-info-landscape {
+      padding: 1rem 1.5rem 1.5rem;
+    }
+
+    @media(max-width:900px) {
+
+      .video-split {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .portrait-video {
+        width: 100%;
+        max-width: 260px;
+      }
+
+    }
+
+    /* Reveal animations */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      background: black;
+    }
+
+    .portrait-video {
+      width: 220px;
+      aspect-ratio: 9/16;
+      object-fit: contain;
+      background: black;
+    }
+
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .corporate-video-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .corporate-header {
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      .video-placeholder-portrait {
+        max-height: 400px;
+      }
+
+      .client-logos {
+        gap: 1rem;
+      }
+
+      .client-logo {
+        width: 70px;
+        height: 35px;
+        font-size: 0.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="nav" class="scrolled">
+    <a href="../index.html" class="logo visible">Piyush Motwani</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#events">Events</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Book Now</a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#events">Events</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <section class="event-header corporate-header">
+    <a href="../index.html#events" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Back to Events
+    </a>
+    <h1 class="event-page-title">Corporate & Formal Hosting</h1>
+    <p class="event-page-subtitle">Hosted team bonding sessions, award ceremonies, and corporate events for Fortune 500
+      companies and leading enterprises across technology, finance, and enterprise sectors.</p>
+  </section>
+
+  <section class="trusted-by-section">
+    <div class="trusted-container">
+
+      <h2 class="trusted-title">Trusted By</h2>
+
+      <div class="logo-carousel">
+        <div class="logo-track">
+
+          <!-- LOGO PLACEHOLDERS - Replace with your logo images later -->
+
+          <div class="logo-item">
+            <img src="../home_logos/snpglobal.png" alt="SnPGlobal">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/eylogo.png" alt="EY">
+          </div>
+
+
+          <div class="logo-item">
+            <img src="../home_logos/logo-amazon.svg" alt="Amazon">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/ibm.svg" alt="IBM">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/bmc.png" alt="BMC">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/infosys-technologies-logo.svg" alt="Infosys">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/metlife.png" alt="MetLife">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/fronius.png" alt="Fronius">
+          </div>
+
+          <!-- DUPLICATE SET (IMPORTANT FOR INFINITE LOOP) -->
+
+          <div class="logo-item">
+            <img src="../home_logos/snpglobal.png" alt="SnPGlobal">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/eylogo.png" alt="EY">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/logo-amazon.svg" alt="Amazon">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/ibm.svg" alt="IBM">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/bmc.png" alt="BMC">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/infosys-technologies-logo.svg" alt="Infosys">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/metlife.png" alt="MetLife">
+          </div>
+
+          <div class="logo-item">
+            <img src="../home_logos/fronius.png" alt="Fronius">
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="corporate-section">
+    <div class="corporate-container">
+      <div class="section-header-corp reveal-on-scroll">
+        <h2>Featured Corporate Work</h2>
+        <p>Professional hosting for leading brands</p>
+      </div>
+
+      <div class="corporate-video-grid">
+
+        <!-- Portrait Video 1 -->
+        <div class="corporate-video-card reveal-on-scroll video-split">
+
+          <video controls class="portrait-video">
+            <source src="../corporate_data/BMCvideo.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-info">
+            <h3>Team Building</h3>
+            <p>I create spaces where teams don’t just participate — they open up, collaborate, and genuinely enjoy the
+              experience together.</p>
+            <ul>
+              <li>Audience interaction</li>
+              <li>High-energy stage presence</li>
+              <li>Professional event flow</li>
+            </ul>
+          </div>
+
+        </div>
+
+
+        <!-- Portrait Video 2 -->
+        <div class="corporate-video-card reveal-on-scroll video-split">
+
+          <video controls class="portrait-video">
+            <source src="../corporate_data/FroniusIndia.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-info">
+            <h3>Vision-Driven Engagement</h3>
+            <p>I create spaces where teams don’t just participate — they open up, collaborate, and genuinely enjoy the
+              experience together.</p>
+            <ul>
+              <li>High-energy, inclusive interactions</li>
+              <li>Breaking the ice without making it awkward</li>
+              <li>Turning groups into teams</li>
+          </div>
+
+        </div>
+
+
+        <!-- Portrait Video 3 -->
+        <div class="corporate-video-card reveal-on-scroll video-split">
+
+          <video controls class="portrait-video">
+            <source src="../corporate_data/metlifevideo.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-info">
+            <h3>Corporate Cultural Celebration</h3>
+            <p>I craft vibrant, well-curated cultural experiences that bring teams together through music, tradition,
+              and shared joy—while maintaining a seamless and professional flow.</p>
+            <ul>
+              <li>Blending tradition with a modern corporate vibe</li>
+              <li>Engaging diverse audiences with ease</li>
+              <li>Smooth coordination of performances and activities</li>
+            </ul>
+          </div>
+
+        </div>
+
+
+        <!-- Landscape Video -->
+        <div class="corporate-video-card reveal-on-scroll">
+
+          <video controls class="landscape-video">
+            <source src="../corporate_data/HackathonVideo.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-info-landscape">
+            <h3>Award Distribution Ceremonies</h3>
+            <p>Every award tells a story — I make sure it's felt.
+              From the first announcement to the final applause, I create a seamless, elegant experience that keeps the
+              audience engaged and the spotlight where it belongs.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:3rem 2rem;text-align:center;background:#F8FAFC;">
+    <h3 style="font-family:Poppins;font-size:1.4rem;color:#0F172A;">
+      ...and many more corporate engagements
+    </h3>
+
+    <p style="margin-top:10px;color:black;font-size:0.95rem;">
+      Several events remain confidential due to client privacy and corporate policies.
+    </p>
+  </section>
+
+
+  <section class="corporate-cta">
+    <div class="event-container">
+      <div class="cta-box reveal-on-scroll">
+        <h3>Planning a Corporate Event?</h3>
+        <p>From team building to award ceremonies, I bring professionalism and energy that aligns with your brand
+          values.</p>
+        <a href="../index.html#contact" class="contact-main-cta">
+          <span>Get In Touch</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p class="copyright">2024 Piyush Motwani. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="../index.html#home">Home</a>
+        <a href="../index.html#events">Events</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile navigation
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileNavClose = document.getElementById('mobileNavClose');
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', () => mobileNav.classList.add('active'));
+        if (mobileNavClose) mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('active'));
+        mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileNav.classList.remove('active')));
+      }
+
+      // Scroll reveal animations
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+
+</html>

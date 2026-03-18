@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Cultural Fests | Piyush Motwani</title>
+  <meta name="description"
+    content="Headlined 50+ college cultural fests, fashion shows, tech competitions, and music festivals. High energy hosting for crowds of 10,000+ students.">
+  <meta name="keywords"
+    content="College Fest, Cultural Events, College Host, Campus Events, Youth Events, Student Events">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../eventpage.css">
+  <style>
+    /* Funky College Fest Theme - Bright & Energetic */
+    :root {
+      --fest-pink: #EC4899;
+      --fest-purple: #8B5CF6;
+      --fest-blue: #3B82F6;
+      --fest-cyan: #06B6D4;
+      --fest-yellow: #FBBF24;
+      --fest-orange: #F97316;
+      --fest-green: #10B981;
+    }
+
+    .fest-header {
+      background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 25%, #3B82F6 50%, #06B6D4 75%, #10B981 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      color: #ffffff;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-header.fest-header {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      border-radius: 0;
+      /* optional */
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .fest-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* Floating confetti effect */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      animation: confettiFall 5s linear infinite;
+    }
+
+    .confetti:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      background: var(--fest-yellow);
+    }
+
+    .confetti:nth-child(2) {
+      left: 25%;
+      animation-delay: 1s;
+      background: var(--fest-pink);
+    }
+
+    .confetti:nth-child(3) {
+      left: 40%;
+      animation-delay: 2s;
+      background: var(--fest-cyan);
+    }
+
+    .confetti:nth-child(4) {
+      left: 55%;
+      animation-delay: 0.5s;
+      background: var(--fest-orange);
+    }
+
+    .confetti:nth-child(5) {
+      left: 70%;
+      animation-delay: 1.5s;
+      background: var(--fest-green);
+    }
+
+    .confetti:nth-child(6) {
+      left: 85%;
+      animation-delay: 2.5s;
+      background: var(--fest-purple);
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(600px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .fest-header .back-link {
+      color: rgba(255, 255, 255, 0.8);
+      position: relative;
+      z-index: 10;
+    }
+
+    .fest-header .back-link:hover {
+      color: #ffffff;
+    }
+
+    .fest-header .event-page-title {
+      color: #ffffff;
+      position: relative;
+      z-index: 10;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .fest-header .event-page-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Content Section */
+    .fest-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #10B981 0%, #FEF3C7 30%, #ffffff 100%);
+      position: relative;
+    }
+
+    .fest-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--fest-pink), var(--fest-purple), var(--fest-blue), var(--fest-cyan), var(--fest-green));
+    }
+
+    .fest-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header-fest {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header-fest h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--fest-pink), var(--fest-purple), var(--fest-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header-fest p {
+      color: #6B7280;
+      font-size: 1rem;
+    }
+
+    .fest-collage {
+      column-count: 3;
+      column-gap: 1rem;
+    }
+
+    /* EACH ITEM */
+    .fest-collage>* {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .photo img,
+    .video video {
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    /* LANDSCAPE */
+    .landscape img {
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    /* PORTRAIT */
+    .portrait img {
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    /* SQUARE */
+    .square img {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+
+    /* VIDEOS */
+    .video video {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .portrait-video video {
+      aspect-ratio: 9/16;
+    }
+
+    /* COMMON */
+    .photo,
+    .video,
+    .brand-tile {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* MEDIA */
+    .photo img,
+    .video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== CUSTOM LAYOUT (NOT BORING GRID) ===== */
+
+    /* LANDSCAPE VIDEO */
+    .landscape-video {
+      grid-column: 1 / 5;
+      grid-row: span 3;
+    }
+
+    /* PORTRAIT VIDEO */
+    .portrait-video {
+      grid-column: 5 / 7;
+      grid-row: span 3;
+    }
+
+    /* LANDSCAPE IMAGES */
+    .landscape {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    /* PORTRAIT IMAGES */
+    .portrait {
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+
+    /* SQUARE */
+    .square {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .brand-tile {
+      padding: 2rem;
+      color: white;
+      text-align: center;
+      font-weight: 600;
+      background: linear-gradient(135deg, #EC4899, #8B5CF6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* floating bubbles */
+    .brand-tile::before,
+    .brand-tile::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .brand-tile::before {
+      width: 120px;
+      height: 120px;
+      top: -40px;
+      right: -40px;
+    }
+
+    .brand-tile::after {
+      width: 80px;
+      height: 80px;
+      bottom: -20px;
+      left: -20px;
+    }
+
+    @media (max-width: 900px) {
+      .fest-collage {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .fest-collage {
+        column-count: 1;
+      }
+    }
+
+
+    /* BIG NUMBER TILE */
+    .big-text {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .big-text h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+
+    .big-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* KEYWORDS TILE */
+    .keywords {
+      grid-column: span 2;
+      grid-row: span 2;
+      background: linear-gradient(135deg, #3B82F6, #06B6D4);
+    }
+
+    .keywords span {
+      font-size: 0.9rem;
+      margin: 3px 0;
+    }
+
+    .brand-tile::after {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -40px;
+      right: -40px;
+    }
+
+    @media (max-width: 900px) {
+      .fest-collage {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+      }
+
+      .landscape-video,
+      .portrait-video {
+        grid-column: 1 / -1;
+      }
+
+      .landscape,
+      .portrait,
+      .square,
+      .brand-tile {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .fest-collage {
+        grid-template-columns: 1fr;
+      }
+
+      * {
+        grid-column: 1 !important;
+      }
+    }
+
+
+
+    /* Photo placeholders */
+    .photo-placeholder-fest {
+      background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+      border: 2px dashed #D1D5DB;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      min-height: 180px;
+    }
+
+    .photo-placeholder-fest:hover {
+      border-color: var(--fest-pink);
+      background: linear-gradient(135deg, #FCE7F3 0%, #F5D0FE 100%);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(236, 72, 153, 0.2);
+    }
+
+    .photo-placeholder-fest svg {
+      width: 40px;
+      height: 40px;
+      color: #9CA3AF;
+      margin-bottom: 0.75rem;
+    }
+
+    .photo-placeholder-fest:hover svg {
+      color: var(--fest-pink);
+    }
+
+    .photo-placeholder-fest .ratio-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #6B7280;
+      margin-bottom: 0.25rem;
+    }
+
+    .photo-placeholder-fest:hover .ratio-text {
+      color: var(--fest-pink);
+    }
+
+    .photo-placeholder-fest .instruction {
+      font-size: 0.7rem;
+      color: #9CA3AF;
+    }
+
+    /* Video placeholders */
+    .video-placeholder-fest {
+      background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .video-placeholder-fest:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+    }
+
+    .video-placeholder-fest::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(236, 72, 153, 0.1), transparent 30%);
+      animation: rotateGlow 8s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .video-placeholder-fest svg {
+      width: 48px;
+      height: 48px;
+      color: var(--fest-pink);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-placeholder-fest .ratio-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-placeholder-fest .instruction {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Fest CTA */
+    .fest-cta {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #ffffff 0%, #FDF2F8 50%, #FCE7F3 100%);
+      position: relative;
+    }
+
+    .fest-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--fest-pink), var(--fest-purple), var(--fest-blue), var(--fest-cyan));
+    }
+
+    .fest-cta .cta-box {
+      background: linear-gradient(135deg, var(--fest-pink) 0%, var(--fest-purple) 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fest-cta .cta-box::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+    }
+
+    .fest-cta .cta-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .fest-cta .cta-box p {
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .fest-cta .contact-main-cta {
+      background: #ffffff;
+      color: var(--fest-pink);
+      position: relative;
+    }
+
+    .fest-cta .contact-main-cta:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Reveal animations */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .fest-collage {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+      }
+
+      .landscape,
+      .portrait,
+      .square {
+        grid-column: span 1;
+      }
+
+      .video-2 {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .fest-collage {
+        grid-template-columns: 1fr;
+      }
+
+      .landscape,
+      .portrait,
+      .square,
+      .video-2 {
+        grid-column: 1;
+      }
+    }
+
+
+    .fest-proof {
+      padding: 5rem 2rem;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .proof-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      max-width: 700px;
+      margin: 0 auto 1rem;
+    }
+
+    .proof-title span {
+      background: linear-gradient(135deg, #EC4899, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .proof-subtitle {
+      color: #6B7280;
+      margin-bottom: 3rem;
+    }
+
+    .proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .stat h3 {
+      font-size: 2.5rem;
+      color: #EC4899;
+    }
+
+    .stat p {
+      font-size: 0.9rem;
+      color: #6B7280;
+    }
+
+    .main-video video {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    /* VIDEO CONTAINER */
+    .video {
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* VIDEO */
+    .video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    /* PLAY BUTTON OVERLAY */
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 70px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s ease;
+    }
+
+    /* TRIANGLE ICON */
+    .play-button::before {
+      content: '';
+      border-left: 18px solid white;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      margin-left: 5px;
+    }
+
+    /* HIDE BUTTON WHEN PLAYING */
+    .video.playing .play-button {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* HOVER EFFECT */
+    .video:hover .play-button {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="nav" class="scrolled">
+    <a href="../index.html" class="logo visible">Piyush Motwani</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#events">Events</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Book Now</a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#events">Events</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <section class="event-header fest-header">
+    <!-- Confetti elements -->
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+
+    <a href="../index.html#events" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Back to Events
+    </a>
+    <h1 class="event-page-title">College Cultural Fests</h1>
+    <p class="event-page-subtitle">Headlined 50+ college cultural fests, fashion shows, tech competitions, and music
+      festivals. Managing crowds of 10,000+ students with authenticity and high energy.</p>
+  </section>
+
+
+  <section class="fest-proof">
+    <div class="fest-proof-container">
+
+      <h2 class="proof-title reveal-on-scroll">
+        Your search for the <span>go-to college fest anchor</span> ends here.
+      </h2>
+
+      <p class="proof-subtitle reveal-on-scroll">
+        High-energy hosting. Crowd control. Pure connection.
+      </p>
+
+      <div class="proof-stats">
+        <div class="stat reveal-on-scroll">
+          <h3>50+</h3>
+          <p>College Fests Hosted</p>
+        </div>
+        <div class="stat reveal-on-scroll" style="transition-delay:0.1s;">
+          <h3>10,000+</h3>
+          <p>Largest Audience</p>
+        </div>
+        <div class="stat reveal-on-scroll" style="transition-delay:0.2s;">
+          <h3>1</h3>
+          <p>Anchor You Need</p>
+        </div>
+      </div>
+
+      <!-- MAIN PROOF VIDEO -->
+      <div class="main-video reveal-on-scroll">
+        <video src="/college_data/Goosebumps - Wait for it !.mp4" controls></video>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="fest-section">
+    <div class="fest-container">
+      <div class="section-header-fest reveal-on-scroll">
+        <h2>Festival Highlights</h2>
+        <p>Feel the energy from some of my best college performances</p>
+      </div>
+
+      <div class="fest-collage">
+
+        <!-- LANDSCAPE VIDEO -->
+        <div class="video landscape-video">
+          <video preload="metadata" onclick="toggleVideo(event, this)">
+            <source src="/college_data/Anchoring MIT WPU Syntropy 2023 - Cultural Program.mp4">
+          </video>
+          <div class="play-button"></div>
+        </div>
+
+        <!-- PORTRAIT VIDEO -->
+        <div class="video portrait-video">
+          <video preload="metadata" onclick="toggleVideo(event, this)">
+            <source src="/college_data/texephyr.mp4">
+          </video>
+          <div class="play-button"></div>
+        </div>
+
+        <!-- LANDSCAPE IMAGES -->
+        <div class="photo landscape"><img src="/college_data/landscape1.jpg"></div>
+        <div class="photo landscape"><img src="/college_data/landscape2.JPG"></div>
+        <div class="photo landscape"><img src="/college_data/landscape3.jpeg"></div>
+
+        <!-- PORTRAIT IMAGES -->
+        <div class="photo portrait"><img src="/college_data/potrait1.JPG"></div>
+        <div class="photo portrait"><img src="/college_data/potrait2.jpg"></div>
+
+        <!-- SQUARE -->
+        <div class="photo square"><img src="/college_data/Piyush Motwani CSI INformal photo.png"></div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <section class="fest-cta">
+    <div class="event-container">
+      <div class="cta-box reveal-on-scroll">
+        <h3>Planning a College Fest?</h3>
+        <p>I bring the energy and connection that makes college events unforgettable. Let's create memories together.
+        </p>
+        <a href="../index.html#contact" class="contact-main-cta">
+          <span>Get In Touch</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p class="copyright">2024 Piyush Motwani. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="../index.html#home">Home</a>
+        <a href="../index.html#events">Events</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile navigation
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileNavClose = document.getElementById('mobileNavClose');
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', () => mobileNav.classList.add('active'));
+        if (mobileNavClose) mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('active'));
+        mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileNav.classList.remove('active')));
+      }
+
+      // Scroll reveal animations
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach(el => observer.observe(el));
+    });
+
+
+    function toggleVideo(event, video) {
+      event.stopPropagation();
+
+      const container = video.parentElement;
+
+      if (video.paused) {
+        // Pause others
+        document.querySelectorAll(".video video").forEach(v => {
+          v.pause();
+          v.parentElement.classList.remove("playing");
+          v.removeAttribute("controls");
+        });
+
+        video.play();
+        video.setAttribute("controls", true);
+        container.classList.add("playing");
+
+      } else {
+        video.pause();
+        container.classList.remove("playing");
+      }
+    }
+
+
+
+  </script>
+</body>
+
+</html>

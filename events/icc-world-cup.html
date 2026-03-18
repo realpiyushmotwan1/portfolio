@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICC Women's ODI World Cup 2025 | Piyush Motwani</title>
+  <meta name="description"
+    content="Video Presenter for ICC Women's ODI World Cup 2025 - covering match highlights, player stories, and key tournament moments.">
+  <meta name="keywords"
+    content="ICC World Cup, Women's Cricket, Video Presenter, Sports Anchor, Cricket Content Creator">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./event-page.css">
+  <style>
+    /* ICC Purple Theme - Inspired by ICC Cricket */
+    :root {
+      --icc-purple: #5B2D8E;
+      --icc-purple-dark: #3D1E5F;
+      --icc-purple-light: #7C3AED;
+      --icc-gold: #F59E0B;
+      --icc-teal: #14B8A6;
+    }
+
+    .event-header.icc-header {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      border-radius: 0;
+      /* optional */
+    }
+
+
+    .icc-header {
+      background: linear-gradient(135deg, #5B2D8E 0%, #3D1E5F 50%, #1F1147 100%);
+      color: #ffffff;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icc-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* Animated gradient orbs */
+    .icc-header::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+      animation: floatOrb 8s ease-in-out infinite;
+    }
+
+    @keyframes floatOrb {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(-30px, 30px) scale(1.1);
+      }
+    }
+
+    .icc-header .back-link {
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      z-index: 10;
+    }
+
+    .icc-header .back-link:hover {
+      color: var(--icc-gold);
+    }
+
+    .icc-header .event-page-title {
+      color: #ffffff;
+      position: relative;
+      z-index: 10;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .icc-header .event-page-subtitle {
+      color: rgba(255, 255, 255, 0.85);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Stats Section with Purple Theme */
+    .icc-stats-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #5B2D8E 0%, #3D1E5F 100%);
+      position: relative;
+    }
+
+
+    .icc-stats-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .icc-stat {
+      text-align: center;
+      color: #ffffff;
+      padding: 2rem 1.5rem;
+      border-radius: 14px;
+
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      backdrop-filter: blur(8px);
+
+      transition: all 0.3s ease;
+    }
+
+    .icc-stat {
+      position: relative;
+    }
+
+    .icc-stat::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .icc-stat:hover::after {
+      opacity: 1;
+    }
+
+    .icc-stat:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+
+    .icc-stat-number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+
+      background: linear-gradient(135deg, #ffffff, #F59E0B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .icc-stat-label {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Content sections with purple accents */
+    .icc-content-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #ffffff 0%, #F5F3FF 100%);
+    }
+
+    .icc-content-section .content-section-title {
+      color: var(--icc-purple);
+    }
+
+    .playlist-card {
+      background: linear-gradient(135deg, #EDE9FE 0%, #F5F3FF 100%);
+      border: 1px solid rgba(91, 45, 142, 0.1);
+    }
+
+    .playlist-link {
+      background: var(--icc-purple);
+    }
+
+    .playlist-link:hover {
+      background: var(--icc-purple-dark);
+      box-shadow: 0 8px 20px rgba(91, 45, 142, 0.4);
+    }
+
+    /* Short form section */
+    .short-form-section {
+      background: linear-gradient(180deg, #F5F3FF 0%, #EDE9FE 50%, #ffffff 100%);
+    }
+
+    .carousel-btn:hover {
+      background: var(--icc-purple);
+      border-color: var(--icc-purple);
+    }
+
+    /* CTA with purple theme */
+    .icc-cta {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #ffffff 0%, #EDE9FE 50%, #F5F3FF 100%);
+      position: relative;
+    }
+
+    .icc-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--icc-purple), var(--icc-purple-light), var(--icc-gold));
+    }
+
+    .icc-cta .cta-box {
+      background: linear-gradient(135deg, var(--icc-purple) 0%, var(--icc-purple-dark) 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icc-cta .cta-box::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+    }
+
+    .icc-cta .cta-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .icc-cta .cta-box p {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .icc-cta .contact-main-cta {
+      background: #ffffff;
+      color: var(--icc-purple);
+      position: relative;
+    }
+
+    .icc-cta .contact-main-cta:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Scroll reveal animations */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    @media (max-width: 768px) {
+      .icc-header {
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      .icc-stats-container {
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+      }
+
+      .icc-stat {
+        min-width: 120px;
+        padding: 1rem;
+      }
+
+      .icc-stat-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav id="nav" class="scrolled">
+    <a href="../index.html" class="logo visible">Piyush Motwani</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#events">Events</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Book Now</a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#events">Events</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Event Header with ICC Purple Theme -->
+  <section class="event-header icc-header">
+    <a href="../index.html#events" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Back to Events
+    </a>
+    <h1 class="event-page-title">ICC Women's ODI World Cup 2025</h1>
+    <p class="event-page-subtitle">Video Presenter covering match highlights, player stories, and key tournament moments
+      - reaching millions of cricket fans worldwide.</p>
+  </section>
+
+  <!-- Stats Highlight -->
+  <section class="icc-stats-section">
+    <div class="icc-stats-container">
+      <div class="icc-stat reveal-on-scroll">
+        <span class="icc-stat-number">50+</span>
+        <span class="icc-stat-label">Videos Created</span>
+      </div>
+      <div class="icc-stat reveal-on-scroll" style="transition-delay: 0.1s;">
+        <span class="icc-stat-number">1M+</span>
+        <span class="icc-stat-label">Total Reach</span>
+      </div>
+      <div class="icc-stat reveal-on-scroll" style="transition-delay: 0.2s;">
+        <span class="icc-stat-number">Long & Short</span>
+        <span class="icc-stat-label">Form Content</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Long Form Content Section -->
+  <section class="content-section icc-content-section">
+    <div class="content-container">
+      <h2 class="content-section-title reveal-on-scroll">Long Form Content</h2>
+
+      <div class="long-form-grid reveal-on-scroll">
+        <div class="main-video-card">
+          <iframe src="https://www.youtube.com/embed/zaBLSe4TJLg?rel=0" title="ICC World Cup Coverage"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="playlist-card">
+          <div class="playlist-info">
+            <h3>Full Playlist</h3>
+            <p>Watch all long-form cricket coverage videos featuring match analysis, player interviews, and tournament
+              highlights.</p>
+            <a href="https://youtube.com/playlist?list=PLmeWrdwRuDIHad_k2gzZr8S-6Kt8yin64&si=-89WJbf1DIwJrDR5"
+              target="_blank" rel="noopener noreferrer" class="playlist-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+              </svg>
+              View Full Playlist on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Short Form Content Section -->
+  <section class="content-section short-form-section">
+    <div class="content-container">
+      <h2 class="content-section-title reveal-on-scroll">Short Form Reels</h2>
+      <p class="content-section-subtitle reveal-on-scroll">Quick highlights and engaging cricket content</p>
+
+      <div class="reels-carousel-container reveal-on-scroll">
+        <div class="reels-carousel" id="reelsCarousel">
+          <div class="reels-track">
+            <!-- Reel 1 -->
+            <div class="reel-item">
+              <iframe src="https://www.instagram.com/p/DPdhsrWCJEP/embed" allowfullscreen>
+              </iframe>
+            </div>
+            <!-- Reel 2 -->
+            <div class="reel-item">
+              <iframe src="https://www.instagram.com/p/DPlAl1QgsB2/embed" allowfullscreen>
+              </iframe>
+            </div>
+            <!-- Reel 3 - Featured/Visible -->
+            <div class="reel-item reel-featured">
+              <iframe src="https://www.instagram.com/p/DPwWZeyAoFk/embed" allowfullscreen>
+              </iframe>
+            </div>
+            <!-- Reel 4 -->
+            <div class="reel-item">
+              <iframe src="https://www.instagram.com/p/DP3UhiEArLw/embed" allowfullscreen>
+              </iframe>
+            </div>
+            <!-- Reel 5 -->
+            <div class="reel-item">
+              <iframe src="https://www.instagram.com/p/DQEZeUyAu4R/embed" allowfullscreen>
+              </iframe>
+            </div>
+            <!-- Reel 6 -->
+            <div class="reel-item">
+              <iframe src="https://www.instagram.com/p/DQLopLVgi1b/embed" allowfullscreen>
+              </iframe>
+            </div>
+            <!-- Reel 7 -->
+            <div class="reel-item">
+              <iframe src="https://www.instagram.com/p/DQV7Xxcgvby/embed" allowfullscreen>
+              </iframe>
+            </div>
+            <!-- Reel 8 -->
+            <div class="reel-item">
+              <iframe src="https://www.instagram.com/p/DQbUzaCggqw/embed" allowfullscreen>
+              </iframe>
+            </div>
+            <!-- Reel 9 -->
+            <div class="reel-item">
+              <iframe src="https://www.instagram.com/p/DQgQTUEgvrH/embed" allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-prev" id="reelsPrev" aria-label="Previous">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button class="carousel-btn carousel-next" id="reelsNext" aria-label="Next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="icc-cta">
+    <div class="event-container">
+      <div class="cta-box reveal-on-scroll">
+        <h3>Looking for a Sports Presenter?</h3>
+        <p>From cricket coverage to sports events, I bring energy, knowledge, and professionalism to every broadcast.
+        </p>
+        <a href="../index.html#contact" class="contact-main-cta">
+          <span>Get In Touch</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p class="copyright">2024 Piyush Motwani. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="../index.html#home">Home</a>
+        <a href="../index.html#events">Events</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    // Initialize mobile nav and reels carousel for event page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile nav
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileNavClose = document.getElementById('mobileNavClose');
+
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileNav.classList.add('active');
+        });
+
+        if (mobileNavClose) {
+          mobileNavClose.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+          });
+        }
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+          });
+        });
+      }
+
+      // Reels carousel
+      const track = document.querySelector('.reels-track');
+      const prevBtn = document.getElementById('reelsPrev');
+      const nextBtn = document.getElementById('reelsNext');
+
+      if (track && prevBtn && nextBtn) {
+        let currentIndex = 0;
+        const items = track.querySelectorAll('.reel-item');
+        const itemWidth = 340; // Width + gap
+        const maxIndex = Math.max(0, items.length - 3);
+
+        function updateCarousel() {
+          track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+          currentIndex = Math.max(0, currentIndex - 1);
+          updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          currentIndex = Math.min(maxIndex, currentIndex + 1);
+          updateCarousel();
+        });
+      }
+
+      // Scroll reveal animations
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+
+</html>
