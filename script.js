@@ -52,7 +52,7 @@ const events = [
 // To use local videos: change src to "videos/your-video.mp4" and set placeholder: false
 const videoCarouselData = [
   { type: 'local', src: 'videos//CorporateHostingSample.mp4', placeholder: false },  // REPLACE: videos/video1.mp4
-  { type: 'local', src: 'videos//IMG_1279.MOV', placeholder: false },  // REPLACE: videos/video2.mp4
+  { type: 'local', src: 'videos//IMG_1279.mp4', placeholder: false },  // REPLACE: videos/video2.mp4
   { type: 'local', src: 'videos//syntropy.mp4', placeholder: false },  // REPLACE: videos/video6.mp4
   { type: 'local', src: 'videos//g20.mp4', placeholder: false },  // REPLACE: videos/video3.mp4
   { type: 'local', src: 'videos//pronite.mp4', placeholder: false },  // REPLACE: videos/video4.mp4
@@ -176,7 +176,7 @@ function renderVideoCarousel() {
 
     // 🚀 PERFORMANCE FIX
     videoEl.setAttribute('data-src', video.src); // don't load immediately
-    videoEl.preload = "none";
+    videoEl.preload = "metadata";
 
     // OPTIONAL (if you add thumbnails later)
     if (video.poster) {
@@ -196,36 +196,37 @@ function renderVideoCarousel() {
 function initSmartVideoCarousel() {
   const track = document.querySelector('.video-track');
   const items = document.querySelectorAll('.video-item');
-  const visibleCount = 3; // how many videos show in viewport at once
+  const visibleCount = 3;
   let index = 0;
 
+  function loadVideo(video) {
+    if (!video.src) {
+      video.src = video.dataset.src;
+      video.load();
+    }
+  }
+
   function updateCarousel() {
-    // move the carousel left
     track.style.transform = `translateX(-${index * (100 / visibleCount)}%)`;
 
     items.forEach((item, i) => {
       const video = item.querySelector('video');
       if (!video) return;
 
-      // Load video only if within viewport + 1 buffer
-      if (i >= index && i < index + visibleCount + 1) {
-        if (!video.src) {
-          video.src = video.dataset.src;
-          video.load();
-        }
-        video.play().catch(() => {}); // autoplay sometimes blocked
+      // 🎯 LOAD current + next 2 videos
+      if (i >= index && i < index + visibleCount) {
+        loadVideo(video);
+        video.play().catch(() => { });
       } else {
         video.pause();
       }
     });
   }
 
-  // first run
   updateCarousel();
 
-  // auto slide every 3 seconds
   setInterval(() => {
-    index = (index + 1) % items.length;
+    index = (index + 1) % (items.length - visibleCount);
     updateCarousel();
   }, 3000);
 }
