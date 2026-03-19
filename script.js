@@ -159,53 +159,77 @@ function initCounters() {
   }
 }
 
-// Render video carousel - BLANK TEMPLATES for local videos
 function renderVideoCarousel() {
   const track = document.querySelector('.video-track');
   if (!track) return;
 
-  // Create video items - blank templates for local videos
-  const createVideoItem = (video, index) => {
+  const createVideoItem = (video) => {
     const div = document.createElement('div');
     div.className = 'video-item';
 
-    if (video.type === 'local') {
-      // Create video element for local videos
-      const videoEl = document.createElement('video');
-      videoEl.muted = true;
-      videoEl.loop = true;
-      videoEl.autoplay = true;
-      videoEl.playsInline = true;
-      videoEl.setAttribute('playsinline', '');
+    // Create video element
+    const videoEl = document.createElement('video');
+    videoEl.muted = true;
+    videoEl.loop = true;
+    videoEl.playsInline = true;
+    videoEl.setAttribute('playsinline', '');
 
-      if (video.placeholder) {
-        // Show placeholder with instructions
-        const placeholder = document.createElement('div');
-        placeholder.className = 'video-placeholder';
-        placeholder.innerHTML = `
-          <div class="placeholder-content">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <polygon points="5,3 19,12 5,21" fill="currentColor"/>
-            </svg>
-            <span>Video ${index + 1}</span>
-            <small>Add: ${video.src}</small>
-          </div>
-        `;
-        div.appendChild(placeholder);
-      } else {
-        videoEl.src = video.src;
-        div.appendChild(videoEl);
-      }
+    // 🚀 PERFORMANCE FIX
+    videoEl.setAttribute('data-src', video.src); // don't load immediately
+    videoEl.preload = "none";
+
+    // OPTIONAL (if you add thumbnails later)
+    if (video.poster) {
+      videoEl.poster = video.poster;
     }
 
+    div.appendChild(videoEl);
     return div;
   };
 
-  // Add videos twice for seamless loop
-  [...videoCarouselData, ...videoCarouselData].forEach((video, index) => {
-    track.appendChild(createVideoItem(video, index % videoCarouselData.length));
+  // Add videos twice (for smooth loop)
+  [...videoCarouselData, ...videoCarouselData].forEach((video) => {
+    track.appendChild(createVideoItem(video));
   });
 }
+
+function initSmartVideoCarousel() {
+  const track = document.querySelector('.video-track');
+  const items = document.querySelectorAll('.video-item');
+  const visibleCount = 3; // how many videos show in viewport at once
+  let index = 0;
+
+  function updateCarousel() {
+    // move the carousel left
+    track.style.transform = `translateX(-${index * (100 / visibleCount)}%)`;
+
+    items.forEach((item, i) => {
+      const video = item.querySelector('video');
+      if (!video) return;
+
+      // Load video only if within viewport + 1 buffer
+      if (i >= index && i < index + visibleCount + 1) {
+        if (!video.src) {
+          video.src = video.dataset.src;
+          video.load();
+        }
+        video.play().catch(() => {}); // autoplay sometimes blocked
+      } else {
+        video.pause();
+      }
+    });
+  }
+
+  // first run
+  updateCarousel();
+
+  // auto slide every 3 seconds
+  setInterval(() => {
+    index = (index + 1) % items.length;
+    updateCarousel();
+  }, 3000);
+}
+
 
 // Render event cards
 function renderEvents() {
@@ -317,11 +341,12 @@ function initScrollProgress() {
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+  renderVideoCarousel();            // CREATE VIDEO ITEMS FIRST
+  initSmartVideoCarousel();      // THEN START AUTOPLAY
+  renderEvents();                   // CREATE EVENT CARDS
   initNavScroll();
   initMobileNav();
   initCounters();
-  renderVideoCarousel();
-  renderEvents();
   initScrollAnimations();
   initHeroMouseEffect();
   initScrollProgress();
