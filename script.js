@@ -51,12 +51,13 @@ const events = [
 // Video carousel data - SAMPLE LINKS (replace with your local video paths)
 // To use local videos: change src to "videos/your-video.mp4" and set placeholder: false
 const videoCarouselData = [
+  { type: 'local', src: 'videos//syntropy.mp4', placeholder: false },  // REPLACE: videos/video1.mp4
   { type: 'local', src: 'videos//CorporateHostingSample.mp4', placeholder: false },  // REPLACE: videos/video1.mp4
   { type: 'local', src: 'videos//IMG_1279.mp4', placeholder: false },  // REPLACE: videos/video2.mp4
-  { type: 'local', src: 'videos//syntropy.mp4', placeholder: false },  // REPLACE: videos/video6.mp4
   { type: 'local', src: 'videos//g20.mp4', placeholder: false },  // REPLACE: videos/video3.mp4
   { type: 'local', src: 'videos//pronite.mp4', placeholder: false },  // REPLACE: videos/video4.mp4
   { type: 'local', src: 'videos//female_cricket.mp4', placeholder: false },  // REPLACE: videos/video5.mp4
+  { type: 'local', src: 'videos//CorporateHostingSample.mp4', placeholder: false },
 ];
 
 // Navigation scroll effect with logo visibility
@@ -167,70 +168,92 @@ function renderVideoCarousel() {
     const div = document.createElement('div');
     div.className = 'video-item';
 
-    // Create video element
     const videoEl = document.createElement('video');
+
     videoEl.muted = true;
     videoEl.loop = true;
     videoEl.playsInline = true;
+    videoEl.autoplay = true;
+
+    // ✅ BEST PRACTICE
+    videoEl.preload = "auto"; // don't load until needed (huge bandwidth save)
+    videoEl.poster = video.poster || "thumbnails/default.jpg";
+
+    videoEl.setAttribute('webkit-playsinline', '');
     videoEl.setAttribute('playsinline', '');
 
-    // 🚀 PERFORMANCE FIX
-    videoEl.setAttribute('data-src', video.src); // don't load immediately
-    videoEl.preload = "metadata";
+    // ✅ MULTIPLE FORMATS (fixes blank issue on Safari/older browsers)
+    const sourceMp4 = document.createElement('source');
+    sourceMp4.src = video.src;
+    sourceMp4.type = "video/mp4";
 
-    // OPTIONAL (if you add thumbnails later)
-    if (video.poster) {
-      videoEl.poster = video.poster;
-    }
+    const sourceWebm = document.createElement('source');
+    sourceWebm.src = video.src.replace('.mp4', '.webm');
+    sourceWebm.type = "video/webm";
+
+    videoEl.appendChild(sourceWebm);
+    videoEl.appendChild(sourceMp4);
+
+    // ✅ fallback text (SEO + accessibility)
+    videoEl.innerHTML += "Your browser does not support HTML5 video.";
 
     div.appendChild(videoEl);
     return div;
   };
 
   // Add videos twice (for smooth loop)
+  // Add videos ONLY once
   [...videoCarouselData, ...videoCarouselData].forEach((video) => {
     track.appendChild(createVideoItem(video));
   });
 }
 
-function initSmartVideoCarousel() {
-  const track = document.querySelector('.video-track');
-  const items = document.querySelectorAll('.video-item');
-  const visibleCount = 3;
-  let index = 0;
+// function initSmartVideoCarousel() {
+//   const track = document.querySelector('.video-track');
+//   const items = document.querySelectorAll('.video-item');
 
-  function loadVideo(video) {
-    if (!video.src) {
-      video.src = video.dataset.src;
-      video.load();
-    }
-  }
+//   const visibleCount = 3;
+//   let index = 0;
 
-  function updateCarousel() {
-    track.style.transform = `translateX(-${index * (100 / visibleCount)}%)`;
+//   function playVideo(video) {
+//     video.play().catch(() => { });
+//   }
 
-    items.forEach((item, i) => {
-      const video = item.querySelector('video');
-      if (!video) return;
+//   function pauseVideo(video) {
+//     video.pause(); // ✅ just pause, don’t reset
+//   }
 
-      // 🎯 LOAD current + next 2 videos
-      if (i >= index && i < index + visibleCount) {
-        loadVideo(video);
-        video.play().catch(() => { });
-      } else {
-        video.pause();
-      }
-    });
-  }
+//   function updateCarousel() {
+//     track.style.transform = `translate3d(-${index * (100 / visibleCount)}%, 0, 0)`;
 
-  updateCarousel();
+//     items.forEach((item, i) => {
+//       const video = item.querySelector('video');
+//       if (!video) return;
 
-  setInterval(() => {
-    index = (index + 1) % (items.length - visibleCount);
-    updateCarousel();
-  }, 3000);
-}
+//       if (i >= index && i < index + visibleCount) {
+//         if (video.preload === "none") {
+//           video.load(); // load only when needed
+//         }
+//         video.play().catch(() => { });
+//       } else {
+//         video.pause();
+//         // video.currentTime = 0;
+//       }
+//     });
+//   }
 
+// updateCarousel();
+
+// setInterval(() => {
+//   index++;
+
+//   if (index > items.length - visibleCount) {
+//     index = items.length - visibleCount; // stop at end
+//   }
+
+//   updateCarousel();
+// }, 3500); // slightly slower = smoother perception
+// }
 
 // Render event cards
 function renderEvents() {
@@ -291,6 +314,21 @@ function initScrollAnimations() {
   animatedElements.forEach(el => observer.observe(el));
 }
 
+function initSectionVisibility() {
+  const section = document.querySelector('.video-carousel-section'); // your section class
+  const videos = document.querySelectorAll('video');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        videos.forEach(v => v.pause());
+      }
+    });
+  }, { threshold: 0.1 });
+
+  if (section) observer.observe(section);
+}
+
 // Mouse move effect for hero section
 function initHeroMouseEffect() {
   const hero = document.querySelector('.hero');
@@ -340,11 +378,56 @@ function initScrollProgress() {
   }, { passive: true });
 }
 
+function animateCarousel() {
+  const track = document.querySelector('.video-track');
+  if (!track) return;
+
+  let position = 0;
+  const speed = 0.4; // adjust speed here
+
+  function step() {
+    position += speed;
+
+    track.style.transform = `translateX(-${position}px)`;
+
+    // seamless loop
+    if (position >= track.scrollWidth / 2) {
+      position = 0;
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  step();
+}
+
+function initVideoVisibility() {
+  const videos = document.querySelectorAll('video');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target;
+
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  videos.forEach(video => observer.observe(video));
+}
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  renderVideoCarousel();            // CREATE VIDEO ITEMS FIRST
-  initSmartVideoCarousel();      // THEN START AUTOPLAY
-  renderEvents();                   // CREATE EVENT CARDS
+  renderVideoCarousel();
+
+  animateCarousel();        // ✅ smooth infinite scroll
+  initVideoVisibility();    // ✅ smart play/pause
+  initSectionVisibility(); // ✅ pause when off screen
+
+  renderEvents();
   initNavScroll();
   initMobileNav();
   initCounters();
