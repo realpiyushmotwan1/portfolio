@@ -877,7 +877,6 @@
         </div>
 
         <!-- LANDSCAPE IMAGES -->
-        <div class="photo landscape"><img src="/college_data/landscape1.jpg"></div>
         <div class="photo landscape"><img src="/college_data/landscape2.JPG"></div>
         <div class="photo landscape"><img src="/college_data/landscape3.jpeg"></div>
 
@@ -945,31 +944,31 @@
       revealElements.forEach(el => observer.observe(el));
     });
 
-function toggleVideo(event, container) {
-  event.stopPropagation();
+    function toggleVideo(event, container) {
+      event.stopPropagation();
 
-  const video = container.querySelector("video");
+      const video = container.querySelector("video");
 
-  // Pause all others
-  document.querySelectorAll(".video").forEach(v => {
-    const vid = v.querySelector("video");
-    if (vid !== video) {
-      vid.pause();
-      v.classList.remove("playing");
-      vid.removeAttribute("controls"); // ✅ remove controls from others
+      // Pause all others
+      document.querySelectorAll(".video").forEach(v => {
+        const vid = v.querySelector("video");
+        if (vid !== video) {
+          vid.pause();
+          v.classList.remove("playing");
+          vid.removeAttribute("controls"); // ✅ remove controls from others
+        }
+      });
+
+      if (video.paused) {
+        video.play();
+        video.setAttribute("controls", true); // ✅ SHOW CONTROLS
+        container.classList.add("playing");
+      } else {
+        video.pause();
+        container.classList.remove("playing");
+        video.removeAttribute("controls"); // ✅ OPTIONAL: hide again on pause
+      }
     }
-  });
-
-  if (video.paused) {
-    video.play();
-    video.setAttribute("controls", true); // ✅ SHOW CONTROLS
-    container.classList.add("playing");
-  } else {
-    video.pause();
-    container.classList.remove("playing");
-    video.removeAttribute("controls"); // ✅ OPTIONAL: hide again on pause
-  }
-}
 
 
 
