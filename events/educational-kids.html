@@ -643,6 +643,60 @@
     }
 
     /* Stylish brown play button */
+    /* CLEAN CENTERED OVERLAY */
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* 💥 THIS centers perfectly */
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      z-index: 3;
+    }
+
+    .main-video {
+      max-width: 900px;
+      margin: 0 auto;
+      /* 💥 CENTER FIX */
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* FORCE CLEAN VIDEO FIT */
+    .main-video video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      background: black;
+      /* 💥 removes weird grey */
+      object-fit: cover;
+    }
+
+    .main-video video {
+      object-fit: contain;
+      /* 💥 FIX */
+      background: black;
+    }
+
+    .fest-proof-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+
+    /* Hide when playing */
+    .video.playing .video-overlay,
+    .main-video.playing .video-overlay {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* BUTTON */
     .play-button {
       width: 75px;
       height: 75px;
@@ -650,10 +704,9 @@
       border-radius: 50%;
       position: relative;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
     }
 
-    /* Triangle */
+    /* TRIANGLE (centered properly) */
     .play-button::before {
       content: '';
       position: absolute;
@@ -664,7 +717,7 @@
       border-color: transparent transparent transparent #fff;
     }
 
-    /* Glow ring */
+    /* PULSE */
     .play-button::after {
       content: '';
       position: absolute;

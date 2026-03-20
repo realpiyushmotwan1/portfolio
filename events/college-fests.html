@@ -690,22 +690,28 @@
     }
 
     /* PLAY BUTTON OVERLAY */
+    /* PLAY BUTTON */
     .play-button {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 70px;
-      height: 70px;
-      background: rgba(0, 0, 0, 0.6);
+      width: 75px;
+      height: 75px;
+      background: rgba(101, 67, 33, 0.9);
+      /* brown */
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: 0.3s ease;
+      z-index: 2;
+
+      pointer-events: none;
+
     }
 
-    /* TRIANGLE ICON */
+    /* TRIANGLE */
     .play-button::before {
       content: '';
       border-left: 18px solid white;
@@ -714,15 +720,49 @@
       margin-left: 5px;
     }
 
+    /* RIPPLE EFFECT */
+    .play-button::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(101, 67, 33, 0.5);
+      border-radius: 50%;
+      animation: pulse 1.8s infinite;
+      z-index: -1;
+    }
+
+    /* PULSE ANIMATION */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+
+      70% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+
     /* HIDE BUTTON WHEN PLAYING */
     .video.playing .play-button {
       opacity: 0;
       pointer-events: none;
     }
 
-    /* HOVER EFFECT */
+    /* HOVER */
     .video:hover .play-button {
       transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .video.playing video {
+      cursor: pointer;
     }
   </style>
 </head>
@@ -801,9 +841,13 @@
 
       <!-- MAIN PROOF VIDEO -->
       <div class="main-video reveal-on-scroll">
-        <video src="/college_data/Goosebumps - Wait for it !.mp4" controls></video>
+        <div class="video" onclick="toggleVideo(event, this)">
+          <video preload="metadata">
+            <source src="/college_data/pronite.mp4">
+          </video>
+          <div class="play-button"></div>
+        </div>
       </div>
-
     </div>
   </section>
 
@@ -817,16 +861,16 @@
       <div class="fest-collage">
 
         <!-- LANDSCAPE VIDEO -->
-        <div class="video landscape-video">
-          <video preload="metadata" onclick="toggleVideo(event, this)">
-            <source src="/college_data/Anchoring MIT WPU Syntropy 2023 - Cultural Program.mp4">
+        <div class="video landscape-video" onclick="toggleVideo(event, this)">
+          <video preload="metadata">
+            <source src="/college_data/syntropy.mp4">
           </video>
           <div class="play-button"></div>
         </div>
 
         <!-- PORTRAIT VIDEO -->
-        <div class="video portrait-video">
-          <video preload="metadata" onclick="toggleVideo(event, this)">
+        <div class="video portrait-video" onclick="toggleVideo(event, this)">
+          <video preload="metadata">
             <source src="/college_data/texephyr.mp4">
           </video>
           <div class="play-button"></div>
@@ -901,29 +945,31 @@
       revealElements.forEach(el => observer.observe(el));
     });
 
+function toggleVideo(event, container) {
+  event.stopPropagation();
 
-    function toggleVideo(event, video) {
-      event.stopPropagation();
+  const video = container.querySelector("video");
 
-      const container = video.parentElement;
-
-      if (video.paused) {
-        // Pause others
-        document.querySelectorAll(".video video").forEach(v => {
-          v.pause();
-          v.parentElement.classList.remove("playing");
-          v.removeAttribute("controls");
-        });
-
-        video.play();
-        video.setAttribute("controls", true);
-        container.classList.add("playing");
-
-      } else {
-        video.pause();
-        container.classList.remove("playing");
-      }
+  // Pause all others
+  document.querySelectorAll(".video").forEach(v => {
+    const vid = v.querySelector("video");
+    if (vid !== video) {
+      vid.pause();
+      v.classList.remove("playing");
+      vid.removeAttribute("controls"); // ✅ remove controls from others
     }
+  });
+
+  if (video.paused) {
+    video.play();
+    video.setAttribute("controls", true); // ✅ SHOW CONTROLS
+    container.classList.add("playing");
+  } else {
+    video.pause();
+    container.classList.remove("playing");
+    video.removeAttribute("controls"); // ✅ OPTIONAL: hide again on pause
+  }
+}
 
 
 

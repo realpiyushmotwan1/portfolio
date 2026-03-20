@@ -17,15 +17,14 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../eventpage.css">
   <style>
-
-     .event-header.fest-header {
+    .event-header.fest-header {
       width: 100%;
       max-width: 100%;
       margin: 0;
       border-radius: 0;
       /* optional */
     }
-    
+
     /* COLLAGE SECTION */
     .collage-section {
       padding: 3rem 2rem;
@@ -139,6 +138,94 @@
       }
 
     }
+
+    .reel-box {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .reel-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Overlay */
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.4s ease;
+      z-index: 3;
+    }
+
+    /* Hide overlay when playing */
+    .reel-box.playing .video-overlay {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Play button */
+
+    /* Stylish brown play button */
+    .play-button {
+      width: 75px;
+      height: 75px;
+      background: linear-gradient(145deg, #8B5E3C, #5C3A21);
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    /* Triangle */
+    .play-button::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 24px;
+      border-style: solid;
+      border-width: 12px 0 12px 18px;
+      border-color: transparent transparent transparent #fff;
+    }
+
+    /* Glow ring */
+    .play-button::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      animation: pulse 1.8s infinite;
+    }
+
+    /* Hover */
+    .edu-item.video:hover .play-button {
+      transform: scale(1.1);
+    }
+
+    /* Pulse animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      70% {
+        transform: scale(1.3);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.3);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 
@@ -210,9 +297,15 @@
 
 
         <!-- CENTER REEL -->
-        <div class="reel-box">
-          <iframe src="../g20_images/Hosting the G20 Interfaith Summit 2023 - India.mp4"" allowfullscreen>
-          </iframe>
+        <div class="reel-box video" onclick="handleVideoClick(this,event)">
+
+          <video playsinline>
+            <source src="../g20_images/Hosting the G20 Interfaith Summit 2023 - India.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-overlay">
+            <div class="play-button"></div>
+          </div>
 
         </div>
 
@@ -305,6 +398,36 @@
 
       revealElements.forEach(el => observer.observe(el));
     });
+
+    function handleVideoClick(container, event) {
+      const video = container.querySelector("video");
+      const playButton = container.querySelector(".play-button");
+
+      // Ignore clicks on controls
+      if (event.target.tagName === "VIDEO") return;
+
+      // If play button clicked
+      if (playButton.contains(event.target)) {
+        if (video.paused) {
+          video.play();
+          container.classList.add("playing");
+          video.controls = true;
+        }
+        return;
+      }
+
+      // Toggle play/pause anywhere
+      if (video.paused) {
+        video.play();
+        container.classList.add("playing");
+        video.controls = true;
+      } else {
+        video.pause();
+        container.classList.remove("playing");
+        video.controls = false;
+      }
+    }
+
   </script>
 </body>
 

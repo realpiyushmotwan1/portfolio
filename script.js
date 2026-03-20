@@ -176,7 +176,7 @@ function renderVideoCarousel() {
     videoEl.autoplay = true;
 
     // ✅ BEST PRACTICE
-    videoEl.preload = "auto"; // don't load until needed (huge bandwidth save)
+    videoEl.preload = "metadata"; // don't load until needed (huge bandwidth save)
     videoEl.poster = video.poster || "thumbnails/default.jpg";
 
     videoEl.setAttribute('webkit-playsinline', '');
@@ -314,19 +314,25 @@ function initScrollAnimations() {
   animatedElements.forEach(el => observer.observe(el));
 }
 
-function initSectionVisibility() {
-  const section = document.querySelector('.video-carousel-section'); // your section class
+function initVideoVisibility() {
   const videos = document.querySelectorAll('video');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        videos.forEach(v => v.pause());
+      const video = entry.target;
+
+      if (entry.isIntersecting) {
+        if (video.readyState === 0) {
+          video.load(); // load only when needed
+        }
+        video.play().catch(() => { });
+      } else {
+        video.pause();
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.5 });
 
-  if (section) observer.observe(section);
+  videos.forEach(video => observer.observe(video));
 }
 
 // Mouse move effect for hero section
@@ -401,31 +407,12 @@ function animateCarousel() {
   step();
 }
 
-function initVideoVisibility() {
-  const videos = document.querySelectorAll('video');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const video = entry.target;
-
-      if (entry.isIntersecting) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  videos.forEach(video => observer.observe(video));
-}
-
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   renderVideoCarousel();
 
   animateCarousel();        // ✅ smooth infinite scroll
   initVideoVisibility();    // ✅ smart play/pause
-  initSectionVisibility(); // ✅ pause when off screen
 
   renderEvents();
   initNavScroll();
