@@ -57,7 +57,6 @@ const videoCarouselData = [
   { type: 'local', src: 'videos//g20.mp4', placeholder: false },  // REPLACE: videos/video3.mp4
   { type: 'local', src: 'videos//pronite.mp4', placeholder: false },  // REPLACE: videos/video4.mp4
   { type: 'local', src: 'videos//female_cricket.mp4', placeholder: false },  // REPLACE: videos/video5.mp4
-  { type: 'local', src: 'videos//CorporateHostingSample.mp4', placeholder: false },
 ];
 
 // Navigation scroll effect with logo visibility
