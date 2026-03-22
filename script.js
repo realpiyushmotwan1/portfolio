@@ -267,7 +267,14 @@ function renderEvents() {
 
     card.innerHTML = `
   <div class="event-image-wrapper ${event.type === 'logo' ? 'logo-card' : ''}">
+    <picture>
+  ${event.id === "icc-world-cup" ? `
+    <source media="(max-width: 768px)" srcset="world_cup_logo/small_logo.png">
     <img class="event-image" src="${event.image}" alt="${event.title}" loading="lazy">
+  ` : `
+    <img class="event-image" src="${event.image}" alt="${event.title}" loading="lazy">
+  `}
+</picture>
   </div>
 
   <div class="event-content">
