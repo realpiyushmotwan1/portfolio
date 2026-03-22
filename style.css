@@ -718,8 +718,12 @@ nav.scrolled {
 
 
 .about-content {
-  max-width: 900px;
+  max-width: 850px;
+  /* controls line length */
   margin: 0 auto;
+  /* centers it */
+  padding: 0 1rem;
+  /* small side spacing */
 }
 
 
@@ -1842,5 +1846,232 @@ footer {
   /* prevent long highlight overflow */
   .highlight {
     white-space: normal;
+  }
+}
+
+/* ===== About Header with Clickable Scroll ===== */
+.about-header-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keep About centered */
+.section-label {
+  text-align: center;
+  z-index: 2;
+}
+
+/* Scroll sides (clickable now) */
+.scroll-side {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.scroll-side:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Left + Right */
+.scroll-side.left {
+  left: 0;
+}
+
+.scroll-side.right {
+  right: 0;
+}
+
+/* Text */
+.scroll-text {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Arrows */
+.scroll-arrows {
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-arrows span {
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+  transform: rotate(45deg);
+  margin: -4px;
+  animation: arrowFlow 1.5s infinite;
+}
+
+.scroll-arrows span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.scroll-arrows span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes arrowFlow {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-4px, -4px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+}
+
+/* ===== About Header with Clickable Scroll ===== */
+.about-header-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keep About centered */
+.section-label {
+  text-align: center;
+  z-index: 2;
+}
+
+/* Scroll sides (clickable now) */
+.scroll-side {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.scroll-side:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Left + Right */
+.scroll-side.left {
+  left: 0;
+}
+
+.scroll-side.right {
+  right: 0;
+}
+
+/* Text */
+.scroll-text {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Arrows */
+.scroll-arrows {
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-arrows span {
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+  transform: rotate(45deg);
+  margin: -4px;
+  animation: arrowFlow 1.5s infinite;
+}
+
+.scroll-arrows span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.scroll-arrows span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes arrowFlow {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-4px, -4px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+}
+
+/* ===== Mobile Optimization (single scroll hint) ===== */
+@media (max-width: 768px) {
+
+  .about-header-wrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Hide RIGHT one */
+  .scroll-side.right {
+    display: none;
+  }
+
+  /* Show LEFT one centered */
+  .scroll-side.left {
+    position: static;
+    transform: none;
+    justify-content: center;
+  }
+
+  .scroll-side {
+    width: 100%;
+    text-align: center;
+  }
+
+  .scroll-text {
+    font-size: 0.65rem;
+  }
+
+  .scroll-arrows span {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-text {
+    font-size: 0.6rem;
+  }
+
+  .scroll-arrows span {
+    width: 8px;
+    height: 8px;
   }
 }
