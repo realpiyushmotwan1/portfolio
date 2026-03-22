@@ -1794,17 +1794,17 @@ footer {
 
 /* 🔥 LOGO MODE (for logo-only cards) */
 .logo-card {
-  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #ffffff;
+  /* cleaner for logos like G20 */
 }
 
 .logo-card .event-image {
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  /* IMPORTANT */
+  /* ✅ no cropping */
+  padding: 16px;
+  /* ✅ gives breathing space */
 }
 
 /* Hover effect */
@@ -2012,6 +2012,7 @@ footer {
 .scroll-arrows span:nth-child(2) {
   animation-delay: 0.2s;
 }
+
 .scroll-arrows span:nth-child(3) {
   animation-delay: 0.4s;
 }
@@ -2021,9 +2022,11 @@ footer {
     opacity: 0;
     transform: rotate(45deg) translate(-4px, -4px);
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
     transform: rotate(45deg) translate(4px, 4px);

@@ -25,7 +25,7 @@ const events = [
   {
     id: "g20-summit",
     title: "The G20 Interfaith Summit",
-    image: "g20_images//g20-logo.png",
+    image: "g20_images//g20_logo.png",
     type: "logo",
     ctaColor: "#B45309", // Gold/amber theme
     ctaGradient: "linear-gradient(135deg, #B45309 0%, #D97706 100%)"
@@ -263,15 +263,14 @@ function renderEvents() {
     const card = document.createElement('a');
     card.className = `event-card card-shine scale-up stagger-${(index % 6) + 1} ${event.id === "icc-world-cup" ? "icc-purple" : ""
       }`;
-    card.href = `events/${event.id}`;
+    card.href = `events/${event.id}.html`;
 
     card.innerHTML = `
   <div class="event-image-wrapper ${event.type === 'logo' ? 'logo-card' : ''}">
     <picture>
   ${event.id === "icc-world-cup" ? `
     <source media="(max-width: 768px)" srcset="world_cup_logo/small_logo.png">
-    <img class="event-image" src="${event.image}" alt="${event.title}" loading="lazy">
-  ` : `
+    <img class="event-image" src="${event.image}" alt="${event.title}" loading="lazy"> ` : `
     <img class="event-image" src="${event.image}" alt="${event.title}" loading="lazy">
   `}
 </picture>
