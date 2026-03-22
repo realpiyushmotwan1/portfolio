@@ -361,7 +361,7 @@
     </div>
   </footer>
 
-  <script src="../script.js"></script>
+
   <script>
     // Initialize mobile nav for event page
     document.addEventListener('DOMContentLoaded', () => {
@@ -400,34 +400,19 @@
       revealElements.forEach(el => observer.observe(el));
     });
 
-    function handleVideoClick(container, event) {
-      const video = container.querySelector("video");
-      const playButton = container.querySelector(".play-button");
+    function handleVideoClick(container) {
+  const video = container.querySelector("video");
 
-      // Ignore clicks on controls
-      if (event.target.tagName === "VIDEO") return;
-
-      // If play button clicked
-      if (playButton.contains(event.target)) {
-        if (video.paused) {
-          video.play();
-          container.classList.add("playing");
-          video.controls = true;
-        }
-        return;
-      }
-
-      // Toggle play/pause anywhere
-      if (video.paused) {
-        video.play();
-        container.classList.add("playing");
-        video.controls = true;
-      } else {
-        video.pause();
-        container.classList.remove("playing");
-        video.controls = false;
-      }
-    }
+  if (video.paused) {
+    video.play();
+    video.controls = true; // ✅ SHOW CONTROLS
+    container.classList.add("playing");
+  } else {
+    video.pause();
+    video.controls = false; // ✅ HIDE CONTROLS when paused
+    container.classList.remove("playing");
+  }
+}
 
   </script>
 </body>
