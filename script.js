@@ -263,7 +263,7 @@ function renderEvents() {
     const card = document.createElement('a');
     card.className = `event-card card-shine scale-up stagger-${(index % 6) + 1} ${event.id === "icc-world-cup" ? "icc-purple" : ""
       }`;
-    card.href = `events/${event.id}`;
+    card.href = `events/${event.id}.html`;
 
     card.innerHTML = `
   <div class="event-image-wrapper ${event.type === 'logo' ? 'logo-card' : ''}">

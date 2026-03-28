@@ -401,18 +401,18 @@
     });
 
     function handleVideoClick(container) {
-  const video = container.querySelector("video");
+      const video = container.querySelector("video");
 
-  if (video.paused) {
-    video.play();
-    video.controls = true; // ✅ SHOW CONTROLS
-    container.classList.add("playing");
-  } else {
-    video.pause();
-    video.controls = false; // ✅ HIDE CONTROLS when paused
-    container.classList.remove("playing");
-  }
-}
+      if (video.paused) {
+        video.play();
+        video.controls = true; // ✅ SHOW CONTROLS
+        container.classList.add("playing");
+      } else {
+        video.pause();
+        video.controls = false; // ✅ HIDE CONTROLS when paused
+        container.classList.remove("playing");
+      }
+    }
 
   </script>
 </body>
